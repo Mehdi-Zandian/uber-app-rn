@@ -6,12 +6,16 @@ import useFetchAPI from "../../hooks/useFetchAPI";
 import AddressItems from "./AddressItems";
 import AddressInput from "./AddressInput";
 
-const AddressAutocomplete = () => {
+const AddressAutocomplete = ({ placeHolderText, target }) => {
+  const dispatch = useDispatch();
   const [showList, setShowList] = useState(false);
 
   // TextInput handlers
   const [searchText, setSearchText] = useState("");
-  const onRemoveAddressHandler = () => setSearchText("");
+  const onRemoveAddressHandler = () => {
+    setSearchText("");
+    dispatch(target === "origin" ? setOrigin(null) : setDestination(null));
+  };
   const onChangeAddressHandler = (text) => {
     setSearchText(text);
     showList === false && setShowList(true);
@@ -24,7 +28,6 @@ const AddressAutocomplete = () => {
   );
 
   // Place items select handlers
-  const dispatch = useDispatch();
   const onSelectItemsHandler = (item) => {
     // update text input
     setSearchText(item?.formatted || item?.properties?.formatted);
@@ -33,21 +36,21 @@ const AddressAutocomplete = () => {
     setShowList(false);
 
     // send origin to the store
-    dispatch(
-      setOrigin({
-        location: item?.geometry?.coordinates,
-        description: item?.formatted || item?.properties?.formatted,
-      })
-    );
+    const data = {
+      location: item?.geometry?.coordinates,
+      description: item?.formatted || item?.properties?.formatted,
+    };
+    dispatch(target === "origin" ? setOrigin(data) : setDestination(data));
 
     // clear the destination from store
-    dispatch(setDestination(null));
+    target === "origin" && dispatch(setDestination(null));
   };
 
   return (
     <View className="mb-3">
       <AddressInput
         enterdText={searchText}
+        placeHolderText={placeHolderText}
         onChangeAddressHandler={onChangeAddressHandler}
         onRemoveAddressHandler={onRemoveAddressHandler}
       />

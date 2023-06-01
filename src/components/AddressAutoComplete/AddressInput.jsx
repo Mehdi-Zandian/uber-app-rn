@@ -4,6 +4,7 @@ import { Entypo } from "@expo/vector-icons";
 
 const AddressInput = ({
   enterdText,
+  placeHolderText,
   onChangeAddressHandler,
   onRemoveAddressHandler,
 }) => {
@@ -11,7 +12,7 @@ const AddressInput = ({
     <View className="relative">
       <TextInput
         className="bg-gray-200 py-1 text-left px-3 ml-2 rounded text-base border-b-0"
-        placeholder="Where From?"
+        placeholder={placeHolderText}
         value={enterdText}
         onChangeText={onChangeAddressHandler}
       />

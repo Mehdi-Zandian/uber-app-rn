@@ -27,7 +27,11 @@ const useFetchAPI = (request, params) => {
   }, [params]);
 
   useEffect(() => {
-    fetchData();
+    // 1 sec after user stopped typing
+    const timer = setTimeout(() => {
+      fetchData();
+    }, 1000);
+    return () => clearTimeout(timer);
   }, [fetchData]);
 
   return { data, loading, error };

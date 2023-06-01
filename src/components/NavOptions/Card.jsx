@@ -2,6 +2,8 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
+import { useSelector } from "react-redux";
+import { selectOrigin } from "../../store/slices/navSlice";
 
 const Card = ({ data }) => {
   const navigation = useNavigation();
@@ -9,12 +11,15 @@ const Card = ({ data }) => {
     navigation.navigate(data.screen);
   };
 
+  const origin = useSelector(selectOrigin);
+
   return (
     <TouchableOpacity
+      disabled={!origin}
       onPress={onPressCardHandler}
       className="p-2 pl-6 pb-8 pt-4 m-2 w-40 rounded bg-gray-200"
     >
-      <View>
+      <View className={!origin && "opacity-20"}>
         <Image
           style={{ width: 120, height: 120, resizeMode: "contain" }}
           source={data.image}

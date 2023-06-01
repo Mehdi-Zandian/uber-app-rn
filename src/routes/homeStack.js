@@ -13,7 +13,7 @@ export default function HomeStack() {
       screenOptions={{
         headerShown: false,
         gestureEnabled: true,
-        gestureDirection: "vertical",
+        gestureDirection: "horizontal",
         CardStyleInterpolators: CardStyleInterpolators.forFadeFromBottomAndroid,
       }}
     >
