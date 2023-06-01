@@ -9,6 +9,6 @@ export const navOptionsData = [
     id: "2",
     title: "Order food",
     image: require("../../assets/app/food.png"),
-    screen: "EastScreen",
+    screen: "EastScreen", // later
   },
 ];

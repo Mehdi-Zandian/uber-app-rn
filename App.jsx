@@ -1,12 +1,16 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { store } from "./src/store/store";
-import HomeScreen from "./src/screens/HomeScreen/HomeScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import "react-native-gesture-handler";
+import HomeStack from "./src/routes/homeStack";
 
 const App = () => {
   return (
     <Provider store={store}>
-      <HomeScreen />
+      <NavigationContainer>
+        <HomeStack />
+      </NavigationContainer>
     </Provider>
   );
 };

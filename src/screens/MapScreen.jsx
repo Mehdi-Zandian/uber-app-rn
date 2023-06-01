@@ -1,0 +1,17 @@
+import React from "react";
+import { View } from "react-native";
+import Map from "../components/Map/Map";
+
+const MapScreen = () => {
+  return (
+    <View>
+      <View className="h-1/2">
+        <Map />
+      </View>
+
+      <View className="h-1/2"></View>
+    </View>
+  );
+};
+
+export default MapScreen;
