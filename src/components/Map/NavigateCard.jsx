@@ -28,7 +28,7 @@ const NavigateCard = () => {
               navigation.navigate("RideOptionsCard");
             }}
             disabled={!destination}
-            className="bg-blue-400 rounded flex-row justify-center p-2 items-center"
+            className="bg-blue-400 rounded-lg flex-row justify-center p-2 items-center"
           >
             <Text className="text-base text-white mr-5">LETS GO</Text>
             <AntDesign name="arrowright" size={24} color="white" />
