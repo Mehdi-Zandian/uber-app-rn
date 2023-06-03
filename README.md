@@ -47,7 +47,7 @@ It is my Uber Clone APP built with React Native and Geoapify API.
 
 
 ## Appendix
-- MY FIRST REACT NATIVE APP 6/2023 😃
+- Developed By Mehdi Zandian 6/2023 😃
 
 ## Authors
 
